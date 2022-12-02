@@ -1,0 +1,56 @@
+<h2>Lista di persone</h2>
+<ul class="persone">
+  <li *ngFor="let p of persone">
+    <button type="button" (click)="onSelect(p)">
+      <span class="badge">{{ p.nome }}</span>
+      <span class="badge">{{ p.cognome }}</span>
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="personaSelezionata">
+  <h2>Dettagli di {{ personaSelezionata.nome | uppercase }}</h2>
+  <div>
+    <label for="nomepersona">Nome: </label>
+    <input
+      id="nomepersona"
+      [(ngModel)]="personaSelezionata.nome"
+      placeholder="nome"
+    />
+    <br />
+    <label for="cognomepersona">Cognome: </label>
+    <input
+      id="cognomepersona"
+      [(ngModel)]="personaSelezionata.cognome"
+      placeholder="cognome"
+    />
+    <br />
+    <label for="etapersona">Età: </label>
+    <input
+      id="etapersona"
+      [(ngModel)]="personaSelezionata.eta"
+      placeholder="età"
+    />
+
+    <br />
+    <br />
+
+    <img [src]="personaSelezionata.immagine" height="200" width="200" />
+
+    <br />
+    <br />
+
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Età</th>
+      </tr>
+      <tr>
+        <td>{{ personaSelezionata.nome }}</td>
+        <td>{{ personaSelezionata.cognome }}</td>
+        <td>{{ personaSelezionata.eta }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
